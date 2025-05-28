@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Vehicle extends Model
 {
@@ -50,5 +52,15 @@ class Vehicle extends Model
     public function carType(): BelongsTo
     {
         return $this->belongsTo(CarType::class, 'car_type_id', 'id');
+    }
+
+    public function detail(): HasOne
+    {
+        return $this->hasOne(VehicleDetail::class, 'vehicle_id', 'id');
+    }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(VehicleImages::class, 'vehicle_id', 'id');
     }
 }
