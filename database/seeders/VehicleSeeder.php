@@ -7,6 +7,8 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Models\Vehicle;
+use Faker\Factory as Faker;
 
 class VehicleSeeder extends Seeder
 {
@@ -15,11 +17,9 @@ class VehicleSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        DB::table('vehicle')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@example.com',
-            'password' => Hash::make('password'),
-        ]);
+        $faker = Faker::create('id_ID');
+        for ($i = 0; $i < 10; $i++) {
+            Vehicle::factory()->create();
+        }
     }
 }

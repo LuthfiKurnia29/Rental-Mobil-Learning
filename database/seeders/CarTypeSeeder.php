@@ -4,9 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
+use App\Models\CarType;
 
 class CarTypeSeeder extends Seeder
 {
@@ -15,15 +13,6 @@ class CarTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-        DB::table('car_types')->insert([
-            'name' => "SUV",
-        ]);
-        DB::table('car_types')->insert([
-            'name' => "MPV",
-        ]);
-        DB::table('car_types')->insert([
-            'name' => "Sport",
-        ]);
+        CarType::factory()->count(5)->create();
     }
 }
